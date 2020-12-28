@@ -25,13 +25,9 @@ jobs:
 
     - name: Install mvn
       run: |
-        sudo add-apt-repository ppa:webupd8team/java
-        sudo apt-get update -y
-        sudo apt-get install oracle-java8-installer
-        cd /opt/
-        wget http://apache.mirrors.pair.com/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
-        sudo tar -xvzf apache-maven-3.6.3-bin.tar.gz
-        sudo mv apache-maven-3.6.3 maven 
+        sudo apt-get update && apt-get upgrade
+        apt-cache show maven | grep Version
+        sudo apt-get -y install maven
 
     - name: verify install
       run: |
